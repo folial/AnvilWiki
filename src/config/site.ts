@@ -56,34 +56,24 @@ export interface SiteConfig {
 }
 
 export const site: SiteConfig = {
-  name: 'Anvil Quest Wiki',
-  shortName: 'AQ Wiki',
-  description:
-    'Complete Anvil Quest wiki with boss guides, tier lists, codes, item locations, and beginner tips. Updated daily by the community.',
-  domain: 'anvilwiki.pages.dev',
-  tagline: 'Your forge for everything Anvil Quest',
-  legalNotice:
-    'Anvil Quest Wiki is a fan-made community site. Not affiliated with or endorsed by the game developer.',
+  name: 'Exark Wiki',
+  shortName: 'Exark Wiki',
+  description: 'Complete Exark wiki with guides, codes, tier lists, and tips. Updated by the community.',
+  domain: 'exarkwiki.pages.dev',
+  tagline: 'Build your ark. Survive the voyage.',
+  legalNotice: 'Exark Wiki is a fan-made community site. Not affiliated with or endorsed by the game developer.',
   social: {
-    official: 'https://example.com/anvil-quest',
-    discord: 'https://discord.gg/example',
-    youtube: 'https://youtube.com/@example',
-    twitter: 'https://twitter.com/example',
-    reddit: 'https://reddit.com/r/anvilquest',
+    official: 'https://store.steampowered.com/app/3435610/Exark/',
   },
-  // 👉 APPLY TEMPLATE: point these at the game's real canonical pages.
-  sameAs: [
-    'https://example.com/anvil-quest',
-    'https://en.wikipedia.org/wiki/Anvil_Quest',
-  ],
   game: {
-    name: 'Anvil Quest',
-    platform: 'Roblox',
-    developer: 'Forge Studios',
-    genre: 'Fantasy RPG',
-    releaseDate: '2026-01-15',
+    name: 'Exark',
+    platform: 'Steam',
+    developer: 'Robot Cat Limited',
+    genre: 'Auto Battler / Engine Builder',
+    releaseDate: '2026-08-18',
   },
-  // hero.webp is 1200×630 (the recommended OG share aspect ratio).
+  // og:image dims of the SHIPPED hero.webp — if you replace public/images/hero.webp,
+  // update these in src/config/site.ts to match (wrong dims mis-crop share cards).
   ogImageWidth: 1200,
   ogImageHeight: 630,
 };

@@ -1,10 +1,19 @@
 # ⚠️⚠️⚠️ FORKERS READ THIS FIRST ⚠️⚠️⚠️
 #
 # This wrangler.toml contains the DEMO SITE config (anvilwiki.pages.dev).
-# The [vars] below point at PNGTRID/AnvilWiki's own GitHub Discussions.
-#
-# When you fork: EITHER
-#   (A) Edit the [vars] values below to your own (SITE_URL + GISCUS_*), OR
+# The [vars]
+# Site (must include https:// protocol — Astro validates this as a URL)
+SITE_URL = "https://exarkwiki.pages.dev"
+# Giscus comments — blank = comments disabled until you fill your own values.
+# See docs/comments.md for how to get these from giscus.app.
+PUBLIC_GISCUS_REPO = ""
+PUBLIC_GISCUS_REPO_ID = ""
+PUBLIC_GISCUS_CATEGORY = ""
+PUBLIC_GISCUS_CATEGORY_ID = ""
+PUBLIC_GISCUS_MAPPING = "pathname"
+# Sponsor card — blank = disabled. Fill PUBLIC_SPONSOR_URL to enable.
+PUBLIC_SPONSOR_URL = ""
+PUBLIC_SPONSOR_IMAGE_URL = ""[vars] values below to your own (SITE_URL + GISCUS_*), OR
 #   (B) Delete this file (`git rm wrangler.toml && git commit`) and configure
 #       env vars in the Cloudflare dashboard instead.
 #
