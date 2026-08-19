@@ -1,8 +1,8 @@
 /**
- * Site configuration — the single source of truth for game-specific metadata.
+ * Site configuration 鈥?the single source of truth for game-specific metadata.
  *
- * 👉 APPLY TEMPLATE: Change every field here when building a new game wiki.
- * This is part of the CONFIG LAYER — framework code reads from here, never the reverse.
+ * 馃憠 APPLY TEMPLATE: Change every field here when building a new game wiki.
+ * This is part of the CONFIG LAYER 鈥?framework code reads from here, never the reverse.
  */
 
 export interface SiteConfig {
@@ -27,8 +27,8 @@ export interface SiteConfig {
     reddit?: string;
   };
   /**
-   * Canonical URLs about the GAME (Steam page, official site, Wikipedia entry…).
-   * Emitted as Organization JSON-LD `sameAs` — helps Google / AI engines link
+   * Canonical URLs about the GAME (Steam page, official site, Wikipedia entry鈥?.
+   * Emitted as Organization JSON-LD `sameAs` 鈥?helps Google / AI engines link
    * this wiki to the game's knowledge-graph entity.
    */
   sameAs?: string[];
@@ -59,7 +59,7 @@ export const site: SiteConfig = {
   name: 'Exark Wiki',
   shortName: 'Exark Wiki',
   description: 'Complete Exark wiki with guides, codes, tier lists, and tips. Updated by the community.',
-  domain: 'exarkwiki.pages.dev',
+  domain: 'exarkwiki.online',
   tagline: 'Build your ark. Survive the voyage.',
   legalNotice: 'Exark Wiki is a fan-made community site. Not affiliated with or endorsed by the game developer.',
   social: {
@@ -72,7 +72,7 @@ export const site: SiteConfig = {
     genre: 'Auto Battler / Engine Builder',
     releaseDate: '2026-08-18',
   },
-  // og:image dims of the SHIPPED hero.webp — if you replace public/images/hero.webp,
+  // og:image dims of the SHIPPED hero.webp 鈥?if you replace public/images/hero.webp,
   // update these in src/config/site.ts to match (wrong dims mis-crop share cards).
   ogImageWidth: 1200,
   ogImageHeight: 630,
