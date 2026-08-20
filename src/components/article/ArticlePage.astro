@@ -2,8 +2,8 @@
 /**
  * Article detail page.
  *
- * Behavior (PRD §9.3): single article falls back to English if locale version
- * missing — direct URL access never 404s.
+ * Behavior (PRD 搂9.3): single article falls back to English if locale version
+ * missing 鈥?direct URL access never 404s.
  *
  * Renders:
  *   - H1 from entry.data.title (the MDX body must NOT contain an H1)
@@ -63,11 +63,11 @@ const categoryLabel = overview?.overviewTitle ?? nav[category] ?? category;
 
 const coverUrl = entry.data.image
   ? `${siteUrl}${entry.data.image.src}`
-  : `${siteUrl}/images/hero.webp`;
+  : `${siteUrl}/images/hero.jpg`;
 
 const related = await getRelatedEntries(entry, locale, 3);
 
-// Visible codes FAQ — same strings feed faqPageJsonLd (marking up invisible
+// Visible codes FAQ 鈥?same strings feed faqPageJsonLd (marking up invisible
 // content violates Google's structured-data policy).
 const codesFaqItems =
   entry.data.codes && entry.data.codes.length > 0
@@ -76,7 +76,7 @@ const codesFaqItems =
 const codesFaqTitle = shared.codesFaqTitle ?? 'Codes FAQ';
 
 // Videos inlined in the MDX body (via <Video id="..."/>) skip the bottom
-// fallback — the ID appearing in the raw body is the inline marker. Videos
+// fallback 鈥?the ID appearing in the raw body is the inline marker. Videos
 // only registered in frontmatter render here as before (backward compatible).
 const bodySrc = entry.body ?? '';
 const fallbackVideos = (entry.data.videos ?? []).filter((v: string) => !bodySrc.includes(v));
@@ -96,7 +96,7 @@ const readMinutes = CJK_LOCALES.includes(servedLocale)
   ? Math.max(1, Math.ceil(bodyText.replace(/\s+/g, '').length / 400))
   : Math.max(1, Math.ceil(bodyText.trim().split(/\s+/).filter(Boolean).length / 200));
 
-// Prev/next within the same category (newest-first list → newer = idx-1).
+// Prev/next within the same category (newest-first list 鈫?newer = idx-1).
 const categoryEntries = await getEntriesByCategory(category, locale);
 const currentIdx = categoryEntries.findIndex((e) => parseEntryId(e.id)?.slug === slug);
 const newerEntry = currentIdx > 0 ? categoryEntries[currentIdx - 1] : null;
@@ -124,15 +124,15 @@ const jsonLd = [
     locale,
     homeLabel: nav.home,
   }),
-  // One VideoObject per embedded video — Google Video search eligibility.
+  // One VideoObject per embedded video 鈥?Google Video search eligibility.
   ...(entry.data.videos ?? []).map((videoId: string) =>
     videoObjectJsonLd({ videoId, title: entry.data.title, uploadDate: entry.data.date }),
   ),
-  // One ImageObject per gallery image — Google Images eligibility.
+  // One ImageObject per gallery image 鈥?Google Images eligibility.
   ...entry.data.gallery.map((g: { image: { src: string }; caption?: string; alt?: string }) =>
     imageObjectJsonLd({ url: `${siteUrl}${g.image.src}`, caption: g.caption, alt: g.alt }),
   ),
-  // Structured codes page → standard 4-question FAQ schema (localized).
+  // Structured codes page 鈫?standard 4-question FAQ schema (localized).
   ...(entry.data.codes && entry.data.codes.length > 0
     ? [faqPageJsonLd((shared.codesFaq as Array<{ question: string; answer: string }>) ?? [])]
     : []),
@@ -239,7 +239,7 @@ const jsonLd = [
       </div>
     </header>
 
-    {/* Quick Answer / TL;DR — answer-first for AI Overviews & featured snippets */}
+    {/* Quick Answer / TL;DR 鈥?answer-first for AI Overviews & featured snippets */}
     {summary && (
       <aside class="mt-6 rounded-lg border-l-4 border-nav bg-nav/5 p-4">
         <div class="flex items-start gap-2">
@@ -264,7 +264,7 @@ const jsonLd = [
       </aside>
     )}
 
-    {/* Stale-content notice — time-sensitive categories older than 90 days */}
+    {/* Stale-content notice 鈥?time-sensitive categories older than 90 days */}
     {outdated && (
       <aside class="mt-4 flex items-start gap-2 rounded-lg border border-amber-500/40 bg-amber-500/10 p-3 text-sm text-foreground" role="note">
         <Icon name="lucide:alert-triangle" class="mt-0.5 h-4 w-4 shrink-0 text-amber-600 dark:text-amber-400" />
@@ -275,7 +275,7 @@ const jsonLd = [
       </aside>
     )}
 
-    {/* Boss stat card — structured key-value data when `boss` frontmatter present */}
+    {/* Boss stat card 鈥?structured key-value data when `boss` frontmatter present */}
     {entry.data.boss && (
       <BossStatCard
         boss={entry.data.boss}
@@ -283,7 +283,7 @@ const jsonLd = [
       />
     )}
 
-    {/* Structured codes table — Active (copy blocks) / Expired (long-tail table) */}
+    {/* Structured codes table 鈥?Active (copy blocks) / Expired (long-tail table) */}
     {entry.data.codes && entry.data.codes.length > 0 && (
       <CodesTable
         codes={entry.data.codes}
@@ -292,7 +292,7 @@ const jsonLd = [
       />
     )}
 
-    {/* Visible codes FAQ — keeps the FAQPage structured data honest. Native
+    {/* Visible codes FAQ 鈥?keeps the FAQPage structured data honest. Native
         <details>, zero JS. */}
     {codesFaqItems.length > 0 && (
       <section class="mt-8 not-prose" aria-label={codesFaqTitle}>
@@ -313,7 +313,7 @@ const jsonLd = [
       </section>
     )}
 
-    {/* Mobile TOC (collapsible) — desktop TOC is sticky in the sidebar area */}
+    {/* Mobile TOC (collapsible) 鈥?desktop TOC is sticky in the sidebar area */}
     <div class="mt-6 lg:hidden">
       <TableOfContents headings={headings} heading={shared.onThisPage} />
     </div>
@@ -326,7 +326,7 @@ const jsonLd = [
       <Content />
     </div>
 
-    {/* Fallback videos — only IDs NOT inlined in the body via <Video/>.
+    {/* Fallback videos 鈥?only IDs NOT inlined in the body via <Video/>.
         Inline <Video> is the preferred placement; this bottom section is a
         legacy/fallback so frontmatter-only articles keep working. */}
     {fallbackVideos.length > 0 && (
@@ -340,7 +340,7 @@ const jsonLd = [
       </section>
     )}
 
-    {/* Gallery — thumbnail grid + native dialog lightbox (renders nothing when empty) */}
+    {/* Gallery 鈥?thumbnail grid + native dialog lightbox (renders nothing when empty) */}
     <ArticleGallery items={entry.data.gallery} heading={shared.gallery} labels={(shared.galleryLabels as Record<string, string>) ?? {}} />
 
     {/* Tags */}
@@ -411,7 +411,7 @@ const jsonLd = [
       </nav>
     )}
 
-    {/* Helpful feedback — no backend; thanks message + nudge to comments */}
+    {/* Helpful feedback 鈥?no backend; thanks message + nudge to comments */}
     <div class="mt-10 flex flex-col items-center gap-2 border-t border-border pt-6 text-center" data-helpful-root>
       <p class="text-sm text-muted-foreground">{shared.wasThisHelpful}</p>
       <div class="flex gap-2" data-helpful-buttons>
@@ -425,14 +425,14 @@ const jsonLd = [
       <p class="hidden text-sm font-medium text-nav" data-helpful-thanks>{shared.feedbackThanks}</p>
     </div>
 
-    {/* Comments — env empty = component renders nothing, no conditional needed.
-        Placed at the very end: body → related → prev/next → feedback → comments → sponsor. */}
+    {/* Comments 鈥?env empty = component renders nothing, no conditional needed.
+        Placed at the very end: body 鈫?related 鈫?prev/next 鈫?feedback 鈫?comments 鈫?sponsor. */}
     <Comments locale={locale} />
 
-    {/* Sponsor / donation — env empty = component renders nothing */}
+    {/* Sponsor / donation 鈥?env empty = component renders nothing */}
     <SponsorCard locale={locale} />
   </article>
-    {/* Desktop TOC — sticky, between article and sidebar */}
+    {/* Desktop TOC 鈥?sticky, between article and sidebar */}
     <div class="hidden w-56 shrink-0 lg:block xl:w-64">
       <div class="sticky top-20 space-y-6">
         <TableOfContents headings={headings} heading={shared.onThisPage} />
@@ -446,7 +446,7 @@ const jsonLd = [
 </LocaleLayout>
 
 <script>
-  // Reading progress bar — article scroll depth as a top-edge bar.
+  // Reading progress bar 鈥?article scroll depth as a top-edge bar.
   (() => {
     const bar = document.getElementById('reading-progress');
     if (!bar) return;
@@ -476,7 +476,7 @@ const jsonLd = [
     });
   })();
 
-  // Helpful feedback — no backend; swap buttons for a thank-you message.
+  // Helpful feedback 鈥?no backend; swap buttons for a thank-you message.
   // Choice persists in localStorage so repeat visitors aren't re-asked.
   (() => {
     const root = document.querySelector('[data-helpful-root]');

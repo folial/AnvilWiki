@@ -1,6 +1,6 @@
 ---
 /**
- * BaseLayout — the root <html> + <head> shell shared by every page.
+ * BaseLayout 鈥?the root <html> + <head> shell shared by every page.
  *
  * Responsibilities:
  *   - <html lang> and theme class (no FOUC via inline script)
@@ -34,14 +34,14 @@ interface Props {
   noindex?: boolean;
   /**
    * Real dimensions of `image` (px). Omitted for article covers whose size we
-   * don't know — a WRONG og:image:width/height makes scrapers mis-crop the
+   * don't know 鈥?a WRONG og:image:width/height makes scrapers mis-crop the
    * share card; absent metas let them measure the image themselves.
    */
   ogImageWidth?: number;
   ogImageHeight?: number;
-  /** Article publish date (og:type=article pages) → article:published_time. */
+  /** Article publish date (og:type=article pages) 鈫?article:published_time. */
   articlePublished?: Date;
-  /** Article last-modified date → article:modified_time. */
+  /** Article last-modified date 鈫?article:modified_time. */
   articleModified?: Date;
   /**
    * Locale of the MAIN CONTENT. Defaults to `locale` (the UI chrome). Pass
@@ -62,7 +62,7 @@ const {
   description,
   locale,
   alternates = [],
-  image = `${siteUrl}/images/hero.webp`,
+  image = `${siteUrl}/images/hero.jpg`,
   jsonLd = [],
   article = false,
   noindex = false,
@@ -80,17 +80,17 @@ const ogLocaleMap = OG_LOCALE_MAP as Record<string, string>;
 const ogLocale = ogLocaleMap[mainLocale] ?? mainLocale;
 
 const suffix = titleSuffix !== undefined ? titleSuffix : site.name;
-const fullTitle = suffix && !title.includes(suffix) ? `${title} — ${suffix}` : title;
+const fullTitle = suffix && !title.includes(suffix) ? `${title} 鈥?${suffix}` : title;
 const orgJsonLd = organizationJsonLd();
 
 // Strip ANY known locale prefix (built from routing.ts so new locales keep
-// x-default pointing at the default-locale URL — a hardcoded en|ja list
+// x-default pointing at the default-locale URL 鈥?a hardcoded en|ja list
 // would silently break for forks that add languages).
 const localePrefixRe = new RegExp(`^/(${locales.join('|')})(?=/|$)`);
 
 // x-default should point at the default-language version when one exists.
 // When the caller passes alternates we derive it from them instead of blind
-// prefix-stripping — that way a page whose default-locale URL was never built
+// prefix-stripping 鈥?that way a page whose default-locale URL was never built
 // (e.g. a ja-only article, or /zh/landing) never emits a dead x-default.
 const defaultAlt = alternates.find((a) => a.hreflang === defaultLocale);
 const xDefaultHref = defaultAlt
@@ -99,7 +99,7 @@ const xDefaultHref = defaultAlt
     ? alternates[0].href
     : `${siteUrl}${Astro.url.pathname.replace(localePrefixRe, '')}`;
 
-// Optional analytics / verification / ads (env-var gated — empty = not injected).
+// Optional analytics / verification / ads (env-var gated 鈥?empty = not injected).
 const gaId = import.meta.env.PUBLIC_GA_ID as string | undefined;
 const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN as string | undefined;
 const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION as string | undefined;
@@ -149,7 +149,7 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
       // Only declare dimensions we actually know: the default hero has fixed
       // site dims; per-article covers pass their real size; unknown = omit
       // (wrong dims make scrapers mis-crop the share card).
-      (ogImageWidth && ogImageHeight) || image === `${siteUrl}/images/hero.webp` ? (
+      (ogImageWidth && ogImageHeight) || image === `${siteUrl}/images/hero.jpg` ? (
         <>
           <meta
             property="og:image:width"
@@ -187,8 +187,7 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
-    {/* Theme color (browser chrome) is injected by the runtime script below —
-        meta content is a plain string where var() never resolves. */}
+    {/* Theme color (browser chrome) is injected by the runtime script below 鈥?        meta content is a plain string where var() never resolves. */}
 
     {/* Google Search Console verification (optional) */}
     {gscVerification && <meta name="google-site-verification" content={gscVerification} />}
@@ -197,7 +196,7 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
       Analytics / AdSense are injected DYNAMICALLY (consent-gated).
       BaseLayout only defines the loader; CookieConsent.astro calls it after
       the visitor accepts. See GDPR note in AGENTS.md. No tracking env vars
-      → this block renders nothing → zero JS.
+      鈫?this block renders nothing 鈫?zero JS.
     */}
     {(gaId || adsenseClient) && (
       <script is:inline define:vars={{ gaId, adsenseClient }}>
@@ -230,7 +229,7 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
     )}
 
     {/*
-      Cloudflare Web Analytics (optional) — cookieless, so unlike GA/AdSense
+      Cloudflare Web Analytics (optional) 鈥?cookieless, so unlike GA/AdSense
       it needs no consent gate. Empty token = nothing injected, zero JS.
     */}
     {cfBeaconToken && (
@@ -246,7 +245,7 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
     <JsonLd data={orgJsonLd} />
     {jsonLd.map((d) => <JsonLd data={d} />)}
 
-    {/* No-FOUC theme init — runs before first paint. */}
+    {/* No-FOUC theme init 鈥?runs before first paint. */}
     <script is:inline>
       (() => {
         let stored = null;
@@ -264,7 +263,7 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
     </script>
 
     {/* Keep <meta name="theme-color"> in sync with the active theme color.
-        Meta content is a plain string — var() never resolves there, so the
+        Meta content is a plain string 鈥?var() never resolves there, so the
         browser chrome color is derived from the computed --brand-text at
         runtime (initial paint + every theme toggle, via class observer). */}
     <script is:inline>
@@ -288,7 +287,7 @@ const privacyLabel = footerStrings.privacyPolicy ?? 'Privacy Policy';
   </head>
   <body class="min-h-screen bg-background text-foreground antialiased">
     <slot />
-    {/* Consent banner — only rendered when tracking env vars are set. */}
+    {/* Consent banner 鈥?only rendered when tracking env vars are set. */}
     {(gaId || adsenseClient) && (
       <CookieConsent
         labels={{
