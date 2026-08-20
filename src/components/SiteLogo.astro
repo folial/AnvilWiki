@@ -1,0 +1,41 @@
+---
+/**
+ * SiteLogo — custom "Ark under the green sun" mark.
+ * Design: a steampunk ark silhouette sailing beneath the baleful green
+ * sun of Exark's world. Ship hull + sun + wake in one compact SVG.
+ * Props:
+ *   size — size/color classes (default "h-7 w-7")
+ */
+const { size = 'h-7 w-7' } = Astro.props;
+---
+<svg
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  class:list=[size]
+  aria-hidden="true"
+>
+  <!-- Green sun (the baleful orb of radiation) -->
+  <circle cx="24" cy="16" r="7" fill="hsl(var(--brand-h) var(--brand-s) 55%)" />
+  <!-- Sun rays -->
+  <g stroke="hsl(var(--brand-h) var(--brand-s) 55%)" stroke-width="1.5" stroke-linecap="round">
+    <line x1="24" y1="4" x2="24" y2="7" />
+    <line x1="36" y1="10" x2="34" y2="12.5" />
+    <line x1="12" y1="10" x2="14" y2="12.5" />
+    <line x1="39" y1="22" x2="36" y2="22" />
+    <line x1="9" y1="22" x2="12" y2="22" />
+  </g>
+
+  <!-- Ark hull (steampunk ship) -->
+  <path
+    d="M6 34 L10 26 Q24 20 38 26 L42 34 Q24 40 6 34 Z"
+    fill="hsl(var(--brand-h) var(--brand-s) 30%)"
+  />
+  <!-- Deck line / rivets -->
+  <line x1="10" y1="30" x2="38" y2="30" stroke="hsl(var(--brand-h) var(--brand-s) 62%)" stroke-width="1.5" />
+  <!-- Mast / sail -->
+  <line x1="24" y1="26" x2="24" y2="18" stroke="hsl(var(--brand-h) var(--brand-s) 62%)" stroke-width="2" stroke-linecap="round" />
+  <path d="M25 19 L34 22 L25 25 Z" fill="hsl(var(--brand-h) var(--brand-s) 45%)" />
+  <!-- Wake / water line -->
+  <path d="M10 40 Q18 43 26 40 Q34 37 42 40" stroke="hsl(var(--brand-h) var(--brand-s) 35%)" stroke-width="2" fill="none" stroke-linecap="round" />
+</svg>

@@ -11,49 +11,49 @@
  */
 @layer base {
   :root {
-  --brand: 160 38% 58%;
-  --brand-light: 160 42% 66%;
-  --brand-h: 160;
-  --brand-s: 38%;
+  --brand: 158 42% 52%;
+  --brand-light: 158 46% 62%;
+  --brand-h: 158;
+  --brand-s: 42%;
 }
 .dark {
-  --brand: 160 38% 58%;
-  --brand-light: 160 42% 66%;
-  --brand-h: 160;
-  --brand-s: 38%;
+  --brand: 158 42% 52%;
+  --brand-light: 158 46% 62%;
+  --brand-h: 158;
+  --brand-s: 42%;
 }
 }
 
 /* Other design tokens 鈥?these reference --brand, so they auto-follow theme changes. */
 @layer base {
   :root {
-    --background: 160 22% 88%;
-    --foreground: 165 18% 22%;
-    --muted: 155 18% 93%;
-    --muted-foreground: 160 12% 44%;
-    --border: 160 14% 77%;
-    --card: 55 25% 97%;
-    --card-foreground: 165 18% 22%;
+    --background: 55 18% 90%;
+    --foreground: 40 20% 20%;
+    --muted: 50 20% 94%;
+    --muted-foreground: 45 12% 40%;
+    --border: 48 18% 78%;
+    --card: 45 30% 98%;
+    --card-foreground: 40 20% 20%;
   }
 
   .dark {
-    --background: 160 22% 88%;
-    --foreground: 165 18% 22%;
-    --muted: 155 18% 93%;
-    --muted-foreground: 160 12% 44%;
-    --border: 160 14% 77%;
-    --card: 55 25% 97%;
-    --card-foreground: 165 18% 22%;
+    --background: 55 18% 90%;
+    --foreground: 40 20% 20%;
+    --muted: 50 20% 94%;
+    --muted-foreground: 45 12% 40%;
+    --border: 48 18% 78%;
+    --card: 45 30% 98%;
+    --card-foreground: 40 20% 20%;
   }
 
   /* AMOLED black (html.dark.black) 鈥?pure-black surfaces for OLED phones:
      saves battery and many players prefer it. Only overrides surface tones;
      brand/foreground inherit from .dark. */
   .black {
-    --background: 160 22% 88%;
-    --muted: 155 18% 93%;
-    --border: 160 14% 77%;
-    --card: 55 25% 97%;
+    --background: 55 18% 90%;
+    --muted: 50 20% 94%;
+    --border: 48 18% 78%;
+    --card: 45 30% 98%;
   }
 }
 
