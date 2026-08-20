@@ -85,7 +85,7 @@ function trendingLabel(link: QuickLink): string {
     </span>
 
     <div class="relative mx-auto w-full max-w-7xl px-4 py-16 md:py-24">
-      <div class="grid items-center gap-8 lg:grid-cols-[1fr_420px]">
+      <div class="grid items-center gap-8 lg:grid-cols-[1fr_480px]">
       <div>
       <p class="text-sm font-semibold uppercase tracking-wider text-foreground">{hero.badge}</p>
       <h1
@@ -117,16 +117,30 @@ function trendingLabel(link: QuickLink): string {
         }
       </div>
       </div>
-      {/* Hero banner art — right column on desktop, above content on mobile */}
+      {/* Hero banner art — right column on desktop with mint glow */}
       <div class="relative hidden lg:block">
-        <img
-          src="/images/header.jpg"
-          alt={site.game.name}
-          class="w-full rounded-xl border border-border shadow-lg"
-          loading="eager"
-          width={460}
-          height={215}
+        {/* Soft mint glow behind the art */}
+        <div
+          aria-hidden="true"
+          class="absolute -inset-6 rounded-3xl bg-gradient-to-br from-nav/35 via-nav/10 to-transparent blur-2xl"
         />
+        {/* Inner ring highlight */}
+        <div
+          aria-hidden="true"
+          class="absolute -inset-px rounded-2xl border border-nav/25"
+        />
+        <div class="relative overflow-hidden rounded-2xl border border-border shadow-[0_8px_40px_-8px_hsl(var(--brand-h)_var(--brand-s)_45%/0.5)]">
+          <img
+            src="/images/header.jpg"
+            alt={site.game.name}
+            class="w-full"
+            loading="eager"
+            width={460}
+            height={215}
+          />
+          {/* Bottom fade for depth */}
+          <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/60 to-transparent" />
+        </div>
       </div>
       </div>
     </div>
