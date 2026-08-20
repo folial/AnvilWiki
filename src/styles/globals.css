@@ -3,50 +3,50 @@
 @tailwind utilities;
 
 /**
- * Theme color variables — the ONLY place to change colors when re-theming.
+ * Theme color variables 鈥?the ONLY place to change colors when re-theming.
  *
- * 👉 RE-THEME: Change ONLY these 4 lines (2 in :root, 2 in .dark).
+ * 馃憠 RE-THEME: Change ONLY these 4 lines (2 in :root, 2 in .dark).
  * All other CSS variables and all components reference these via var().
  * Do NOT hardcode hex/rgba/Tailwind color classes elsewhere.
  */
 @layer base {
   :root {
-  --brand: 35 70% 48%;
-  --brand-light: 35 65% 58%;
-  --brand-h: 35;
-  --brand-s: 70%;
+  --brand: 168 55% 55%;
+  --brand-light: 168 60% 62%;
+  --brand-h: 168;
+  --brand-s: 55%;
 }
 .dark {
-  --brand: 35 60% 42%;
-  --brand-light: 35 55% 52%;
-  --brand-h: 35;
-  --brand-s: 60%;
+  --brand: 168 50% 50%;
+  --brand-light: 168 55% 58%;
+  --brand-h: 168;
+  --brand-s: 55%;
 }
 }
 
-/* Other design tokens — these reference --brand, so they auto-follow theme changes. */
+/* Other design tokens 鈥?these reference --brand, so they auto-follow theme changes. */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-    --border: 214 32% 91%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --background: 170 10% 9%;
+    --foreground: 160 30% 92%;
+    --muted: 180 12% 13%;
+    --muted-foreground: 161 15% 67%;
+    --border: 166 12% 21%;
+    --card: 180 12% 13%;
+    --card-foreground: 160 30% 92%;
   }
 
   .dark {
-    --background: 222 47% 7%;
-    --foreground: 210 40% 98%;
-    --muted: 217 33% 14%;
-    --muted-foreground: 215 20% 65%;
-    --border: 217 33% 18%;
-    --card: 222 47% 10%;
-    --card-foreground: 210 40% 98%;
+    --background: 170 10% 9%;
+    --foreground: 160 30% 92%;
+    --muted: 180 12% 13%;
+    --muted-foreground: 161 15% 67%;
+    --border: 166 12% 21%;
+    --card: 180 12% 13%;
+    --card-foreground: 160 30% 92%;
   }
 
-  /* AMOLED black (html.dark.black) — pure-black surfaces for OLED phones:
+  /* AMOLED black (html.dark.black) 鈥?pure-black surfaces for OLED phones:
      saves battery and many players prefer it. Only overrides surface tones;
      brand/foreground inherit from .dark. */
   .black {
@@ -83,18 +83,17 @@
 @layer components {
   .btn-primary {
     @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
-    /* Button background needs white text contrast ≥ 4.5:1 (WCAG AA).
+    /* Button background needs white text contrast 鈮?4.5:1 (WCAG AA).
        --brand (52% lightness) gives only 3.1:1, so we darken it
        to ~40% for button backgrounds. This does NOT change --brand
-       itself — it's a derived value for buttons only. */
+       itself 鈥?it's a derived value for buttons only. */
     background-color: hsl(var(--brand-h) var(--brand-s) 40%);
   }
   .btn-primary:hover {
     background-color: hsl(var(--brand-h) var(--brand-s) 35%);
   }
 
-  /* Floating pill variant of btn-primary (landing community QR widget) —
-     same AA-safe darkened brand background, rounded + shadowed. */
+  /* Floating pill variant of btn-primary (landing community QR widget) 鈥?     same AA-safe darkened brand background, rounded + shadowed. */
   .btn-fab {
     @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
     background-color: hsl(var(--brand-h) var(--brand-s) 40%);
@@ -111,7 +110,7 @@
     @apply rounded-lg border bg-card text-card-foreground transition hover:border-nav/50 hover:shadow-md;
   }
 
-  /* Unified section vertical rhythm — use on all homepage sections. */
+  /* Unified section vertical rhythm 鈥?use on all homepage sections. */
   .section {
     @apply mx-auto max-w-7xl px-4 py-12 md:py-16;
   }
@@ -127,7 +126,7 @@
   }
 }
 
-/* Print styles — readers printing long guides get clean content only:
+/* Print styles 鈥?readers printing long guides get clean content only:
    no header/footer/ads/TOC/floating buttons, full-width article. */
 @media print {
   header,
@@ -151,5 +150,5 @@
   }
 }
 
-/* Theme initialization script — runs before paint to avoid FOUC. */
+/* Theme initialization script 鈥?runs before paint to avoid FOUC. */
 /* The actual <script> is injected in BaseLayout.astro. */

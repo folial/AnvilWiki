@@ -149,19 +149,15 @@
    "closingCta": {
   "title": "Start your Exark journey",
   "description": "Bookmark this wiki and check back after every game update.",
-  "primaryText": "Browse all",
-  "primaryHref": "/guides",
-  "secondaryText": "Official site",
-  "secondaryHref": "https://store.steampowered.com/app/3435610/Exark/"
+  "primary": { "label": "Browse all", "href": "/guides" },
+  "secondary": { "label": "Exark on Steam", "href": "https://store.steampowered.com/app/3435610/Exark/" }
 },
     "hero": {
       "badge": "Exark",
       "title": "Exark Wiki",
       "description": "Complete Exark guides, houses, buildings, and crew.",
-      "ctaPrimary": "Beginner guide",
-"ctaPrimaryHref": "/guides",
-"ctaSecondary": "Browse all",
-"ctaSecondaryHref": "/guides"
+      "ctaPrimary": { "label": "Beginner guide", "href": "/guides" },
+"ctaSecondary": { "label": "Browse all", "href": "/guides" }
     },
     "start": {
       "badge": "Quick start",
