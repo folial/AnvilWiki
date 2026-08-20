@@ -69,58 +69,79 @@ function trendingLabel(link: QuickLink): string {
   jsonLd={jsonLd}
 >
   {/* ─────────────────────────────── Hero ─────────────────────────────── */}
-  <section class="relative flex min-h-[60vh] items-center overflow-hidden border-b border-border md:min-h-[72vh]">
-    {/* Full-bleed background art */}
-    <img
-      src="/images/header.jpg"
-      alt=""
-      aria-hidden="true"
-      class="absolute inset-0 h-full w-full object-cover"
-      loading="eager"
-    />
-    {/* Warm overlay for readability — darker on the left where text sits,
-        fading to transparent on the right so the art shows through */}
+  <section class="relative flex min-h-[52vh] items-center overflow-hidden border-b border-border md:min-h-[68vh]">
+    {/* Subtle theme-color gradient backdrop — gives the hero a visual anchor
+        without requiring an image asset. Sits behind the watermark. */}
     <div
       aria-hidden="true"
-      class="absolute inset-0 bg-gradient-to-r from-background via-background/88 to-background/20 md:via-background/78"
+      class="pointer-events-none absolute inset-0 bg-gradient-to-br from-nav/8 via-transparent to-transparent"
     />
-    {/* Bottom fade into page background */}
-    <div
+    {/* Faint game-name watermark — pure CSS, no image asset required. */}
+    <span
       aria-hidden="true"
-      class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent"
-    />
+      class="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none text-center text-[18vw] font-black leading-none text-foreground/[0.03] md:text-[14vw]"
+    >
+      {site.game.name}
+    </span>
 
     <div class="relative mx-auto w-full max-w-7xl px-4 py-16 md:py-24">
-      <div class="max-w-2xl">
-        <p class="text-sm font-semibold uppercase tracking-wider text-foreground">{hero.badge}</p>
-        <h1
-          class="mt-3 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-4xl font-black tracking-tight text-transparent sm:text-5xl md:text-6xl lg:text-7xl"
-        >
-          {hero.title}
-        </h1>
-        <p class="mt-5 max-w-xl text-base text-muted-foreground md:text-lg">{hero.description}</p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          {
-            hero.ctaPrimary && (
-              <a
-                href={site.social.official}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn-primary"
-              >
-                <Icon name="lucide:play" class="mr-2 h-4 w-4" />
-                {hero.ctaPrimary}
-              </a>
-            )
-          }
-          {
-            hero.ctaSecondary && (
-              <a href={listPath(NAVIGATION_CONFIG[1]?.key ?? 'guides', locale)} class="btn-outline">
-                {hero.ctaSecondary}
-              </a>
-            )
-          }
+      <div class="grid items-center gap-8 lg:grid-cols-[1fr_600px]">
+      <div>
+      <p class="text-sm font-semibold uppercase tracking-wider text-foreground">{hero.badge}</p>
+      <h1
+        class="mt-3 max-w-3xl bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-4xl font-black tracking-tight text-transparent sm:text-5xl md:text-6xl lg:text-7xl"
+      >
+        {hero.title}
+      </h1>
+      <p class="mt-5 max-w-xl text-base text-muted-foreground md:text-lg">{hero.description}</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        {
+          hero.ctaPrimary && (
+            <a
+              href={site.social.official}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-primary"
+            >
+              <Icon name="lucide:play" class="mr-2 h-4 w-4" />
+              {hero.ctaPrimary}
+            </a>
+          )
+        }
+        {
+          hero.ctaSecondary && (
+            <a href={listPath(NAVIGATION_CONFIG[1]?.key ?? 'guides', locale)} class="btn-outline">
+              {hero.ctaSecondary}
+            </a>
+          )
+        }
+      </div>
+      </div>
+      {/* Hero banner art — right column on desktop with mint glow */}
+      <div class="relative hidden lg:block">
+        {/* Soft mint glow behind the art */}
+        <div
+          aria-hidden="true"
+          class="absolute -inset-6 rounded-3xl bg-gradient-to-br from-nav/35 via-nav/10 to-transparent blur-2xl"
+        />
+        {/* Inner ring highlight */}
+        <div
+          aria-hidden="true"
+          class="absolute -inset-px rounded-2xl border border-nav/25"
+        />
+        <div class="relative overflow-hidden rounded-2xl border border-border shadow-[0_8px_40px_-8px_hsl(var(--brand-h)_var(--brand-s)_45%/0.5)]">
+          <img
+            src="/images/header.jpg"
+            alt={site.game.name}
+            class="w-full"
+            loading="eager"
+            width={460}
+            height={215}
+          />
+          {/* Bottom fade for depth */}
+          <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/60 to-transparent" />
         </div>
+      </div>
       </div>
     </div>
   </section>
