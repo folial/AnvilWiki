@@ -11,49 +11,49 @@
  */
 @layer base {
   :root {
-  --brand: 168 55% 55%;
-  --brand-light: 168 60% 62%;
-  --brand-h: 168;
-  --brand-s: 55%;
+  --brand: 160 38% 58%;
+  --brand-light: 160 42% 66%;
+  --brand-h: 160;
+  --brand-s: 38%;
 }
 .dark {
-  --brand: 168 50% 50%;
-  --brand-light: 168 55% 58%;
-  --brand-h: 168;
-  --brand-s: 55%;
+  --brand: 160 38% 58%;
+  --brand-light: 160 42% 66%;
+  --brand-h: 160;
+  --brand-s: 38%;
 }
 }
 
 /* Other design tokens 鈥?these reference --brand, so they auto-follow theme changes. */
 @layer base {
   :root {
-    --background: 170 10% 9%;
-    --foreground: 160 30% 92%;
-    --muted: 180 12% 13%;
-    --muted-foreground: 161 15% 67%;
-    --border: 166 12% 21%;
-    --card: 180 12% 13%;
-    --card-foreground: 160 30% 92%;
+    --background: 160 22% 88%;
+    --foreground: 165 18% 22%;
+    --muted: 155 18% 93%;
+    --muted-foreground: 160 12% 44%;
+    --border: 160 14% 77%;
+    --card: 55 25% 97%;
+    --card-foreground: 165 18% 22%;
   }
 
   .dark {
-    --background: 170 10% 9%;
-    --foreground: 160 30% 92%;
-    --muted: 180 12% 13%;
-    --muted-foreground: 161 15% 67%;
-    --border: 166 12% 21%;
-    --card: 180 12% 13%;
-    --card-foreground: 160 30% 92%;
+    --background: 160 22% 88%;
+    --foreground: 165 18% 22%;
+    --muted: 155 18% 93%;
+    --muted-foreground: 160 12% 44%;
+    --border: 160 14% 77%;
+    --card: 55 25% 97%;
+    --card-foreground: 165 18% 22%;
   }
 
   /* AMOLED black (html.dark.black) 鈥?pure-black surfaces for OLED phones:
      saves battery and many players prefer it. Only overrides surface tones;
      brand/foreground inherit from .dark. */
   .black {
-    --background: 0 0% 0%;
-    --muted: 0 0% 10%;
-    --border: 0 0% 16%;
-    --card: 0 0% 4%;
+    --background: 160 22% 88%;
+    --muted: 155 18% 93%;
+    --border: 160 14% 77%;
+    --card: 55 25% 97%;
   }
 }
 
@@ -87,19 +87,19 @@
        --brand (52% lightness) gives only 3.1:1, so we darken it
        to ~40% for button backgrounds. This does NOT change --brand
        itself 鈥?it's a derived value for buttons only. */
-    background-color: hsl(var(--brand-h) var(--brand-s) 40%);
+    background-color: hsl(var(--brand-h) var(--brand-s) 38%);
   }
   .btn-primary:hover {
-    background-color: hsl(var(--brand-h) var(--brand-s) 35%);
+    background-color: hsl(var(--brand-h) var(--brand-s) 32%);
   }
 
   /* Floating pill variant of btn-primary (landing community QR widget) 鈥?     same AA-safe darkened brand background, rounded + shadowed. */
   .btn-fab {
     @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
-    background-color: hsl(var(--brand-h) var(--brand-s) 40%);
+    background-color: hsl(var(--brand-h) var(--brand-s) 38%);
   }
   .btn-fab:hover {
-    background-color: hsl(var(--brand-h) var(--brand-s) 35%);
+    background-color: hsl(var(--brand-h) var(--brand-s) 32%);
   }
 
   .btn-outline {
